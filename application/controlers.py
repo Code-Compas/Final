@@ -6,10 +6,10 @@ b=dict()
 b["in"]=False
 a=0
 
-@app.route("/",methods=["GET","POST"])
+@app.route("/",methods=["GET"])
 def f1():
     if request.method=="GET":
-        return render_template("HomePage.html")
+        return render_template("home.html")
     
 @app.route("/login.html",methods=["GET","POST"])
 def f3():
@@ -29,3 +29,15 @@ def f3():
                 b["in"]=True
                 return render_template("HomePage.html",a=b)
             return render_template("form.html",a=b)
+@app.route("/about.html",methods=["GET","POST"])
+def f4():
+    if request.method=="GET":
+        return render_template("about.html")
+@app.route("/tours.html",methods=["GET","POST"])
+def f5():
+    if request.method=="GET":
+        return render_template("tours.html")
+@app.route("/destination.html",methods=["GET","POST"])
+def f6():
+    if request.method=="GET":
+        return render_template("destination.html")
