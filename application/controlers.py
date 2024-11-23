@@ -27,7 +27,7 @@ def f3():
         else:
             if "submit" in a:
                 b["in"]=True
-                return render_template("HomePage.html",a=b)
+                return render_template("home.html",a=b)
             return render_template("form.html",a=b)
 @app.route("/about.html",methods=["GET","POST"])
 def f4():
@@ -41,3 +41,7 @@ def f5():
 def f6():
     if request.method=="GET":
         return render_template("destination.html")
+@app.route("/blogs.html",methods=["GET","POST"])
+def f7():
+    if request.method=="GET":
+        return render_template("blogs.html")
