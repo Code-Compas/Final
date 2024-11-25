@@ -6,7 +6,7 @@ b=dict()
 b["in"]=False
 a=0
 
-@app.route("/",methods=["GET"])
+@app.route("/home.html",methods=["GET"])
 def f1():
     if request.method=="GET":
         return render_template("home.html")
