@@ -23,7 +23,7 @@ def f3():
             b[i]=a[i]
         
         if "login" in a:
-            return render_template("form.html",a=b)
+            return render_template("card.html",a=b) # loging part
         else:
             if "submit" in a:
                 b["in"]=True
