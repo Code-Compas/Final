@@ -11,12 +11,9 @@ class User(db.Model):
 
 class Tour(db.Model):
     __tablename__="tour"
-    SrNo=db.Column(db.Integer,primary_key=True)
-    Destination=db.Column(db.String)
-    Country=db.Column(db.String)
-    Climate=db.Column(db.String)
-    Budget=db.Column(db.String)
-    Description=db.Column(db.String)
+    destination=db.Column(db.String)
+    title=db.Column(db.String,primary_key=True)
+    
     
 
 class TripPlaced(db.Model):

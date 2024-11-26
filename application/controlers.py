@@ -10,10 +10,8 @@ a=0
 def f1():
     if request.method=="GET":
         return render_template("home.html")
-    
 @app.route("/login.html",methods=["GET","POST"])
 def f3():
-    print(b)
     if request.method=="GET" and b["in"]==False:
         print(b)
         return render_template("login.html")
@@ -51,6 +49,10 @@ def f4():
 def f5():
     if request.method=="GET":
         return render_template("tours.html")
+    else:
+        a=dict(request.form)
+        print(a)
+        return render_template("card.html",a=a)
 @app.route("/destination.html",methods=["GET","POST"])
 def f6():
     if request.method=="GET":
