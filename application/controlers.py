@@ -51,8 +51,14 @@ def f5():
         return render_template("tours.html")
     else:
         a=dict(request.form)
-        print(a)
-        return render_template("card.html",a=a)
+        total=0
+        tour=[]
+        for i in a:
+            x=Tour.query.filter_by(destination=i).first()
+            total+=x.cost
+            tour.append(x)
+            
+        return render_template("card.html",a=tour,total=total)
 @app.route("/destination.html",methods=["GET","POST"])
 def f6():
     if request.method=="GET":
@@ -61,3 +67,7 @@ def f6():
 def f7():
     if request.method=="GET":
         return render_template("blogs.html")
+@app.route("/payment.html",methods=["GET","POST"])
+def f8():
+    if request.method=="GET":
+        return render_template("payment.html")

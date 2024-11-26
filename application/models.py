@@ -11,8 +11,11 @@ class User(db.Model):
 
 class Tour(db.Model):
     __tablename__="tour"
+    
+    country=db.Column(db.String,primary_key=True)
     destination=db.Column(db.String)
-    title=db.Column(db.String,primary_key=True)
+    description=db.Column(db.String)
+    cost=db.Column(db.Integer)
     
     
 
