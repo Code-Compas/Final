@@ -13,20 +13,34 @@ def f1():
     
 @app.route("/login.html",methods=["GET","POST"])
 def f3():
+    print(b)
     if request.method=="GET" and b["in"]==False:
+        print(b)
         return render_template("login.html")
     elif request.method=="GET" and b["in"]:
+        print(b)
         return render_template("Profile.html",a=b)
     else:
         a=dict(request.form)
         for i in a:
             b[i]=a[i]
-        
+            
         if "login" in a:
-            return render_template("card.html",a=b) # loging part
+            print(b,"hhh")
+            user=db.session.query(User).filter(User.mail==b["mail"]).first()
+            b["city"]=user.city
+            b["district"]=user.district
+            b["name1"]=user.fName
+            b["name2"]=user.lName
+            b["phoneno"]=user.phoneNo
+            b["in"]=True
+            return render_template("home.html",a=b) # loging part
         else:
             if "submit" in a:
                 b["in"]=True
+                user=User(phoneNo=b["phoneno"],fName=b["name1"],lName=b["name2"],mail=b["mail"],city=b["city"],district=b["district"],password=b["password"])
+                db.session.add(user)
+                db.session.commit()
                 return render_template("home.html",a=b)
             return render_template("form.html",a=b)
 @app.route("/about.html",methods=["GET","POST"])
