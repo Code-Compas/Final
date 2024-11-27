@@ -1,4 +1,5 @@
 from application.database import db
+
 class User(db.Model):
     __tablename__="user"
     phoneNo=db.Column(db.Integer,primary_key=True)
@@ -8,7 +9,6 @@ class User(db.Model):
     city=db.Column(db.String)
     district=db.Column(db.String)
     password=db.Column(db.String,unique=True)
-
 class Tour(db.Model):
     __tablename__="tour"
     
@@ -16,9 +16,6 @@ class Tour(db.Model):
     destination=db.Column(db.String)
     description=db.Column(db.String)
     cost=db.Column(db.Integer)
-    
-    
-
 class TripPlaced(db.Model):
     __tablename__="tripPlaced"
     phoneNo=db.Column(db.Integer,primary_key=True)
