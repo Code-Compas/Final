@@ -1,4 +1,4 @@
-from flask import render_template,request,Flask
+from flask import render_template, request, Flask, redirect
 from flask import current_app as app
 from application.models import *
 
@@ -10,6 +10,10 @@ a=0
 def f1():
     if request.method=="GET":
         return render_template("home.html")
+@app.route("/", methods=["GET"])
+def index_redirect():
+    # Redirect root to the home page so / doesn't return an empty response
+    return redirect('/home.html')
 @app.route("/login.html",methods=["GET","POST"])
 def f3():
     if request.method=="GET" and b["in"]==False:
